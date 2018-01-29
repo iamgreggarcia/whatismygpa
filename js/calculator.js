@@ -89,7 +89,6 @@ function courseHasData(gradeElement, creditHourElement) {
 // aggregate form data
 var getCourses = function() {
   var coursesArray = aggregateCourseData();
-  console.log(coursesArray);
   return coursesArray;
 };
 
@@ -100,7 +99,6 @@ var aggregateCourseData = function() {
   // check each form element for data
   // class 1
   if (courseHasData(course1GradeEl, course1CHEl)) {
-    console.log("Course has data");
     gradeConversion = convertGrade(course1GradeEl);
     tempCHValue = getCreditHours(course1CHEl);
     chValue = creditHourToInteger.get(tempCHValue);
@@ -152,7 +150,6 @@ var aggregateCourseData = function() {
 
 // Convert grade element value to numerical value
 function convertGrade(gradeElement) {
-  console.log("Converting letter grade to numerical value.");
   var gradeValue = gradeElement[gradeElement.selectedIndex].value;
   var numericalGrade = gradeToPointsTable.get(gradeValue);
   return numericalGrade;
@@ -231,7 +228,6 @@ var creditHourErrorEl = document.querySelector('.ch-error');
 var calculate = document.getElementById("calcButton");
 
 var onCalculateClick = function() {
-    alert("Calculate button clicked");
     calcButtonErrorEl.innerHTML = "";
     computedTermGPAElement.innerHTML = "";
     computedCumulativeGPA.innerHTML = "";
@@ -246,9 +242,6 @@ var onCalculateClick = function() {
       if (formClassesArray.length > 0) {
         formClassesArray.length = 0;
         var semesterGPA = getSemesterGPA();
-        console.log("calculating cumulative GPA");
-        console.log("Entered gpa: " + gpa);
-        console.log("Enter credit hours: " + ch)
         var totalCumulativeGPA = getCumulativeGPA(gpa, ch);
         computedTermGPAElement.innerHTML = "Semester GPA:&emsp;" + semesterGPA + "\n";
         computedCumulativeGPA.innerHTML  = "Cumulative GPA:&emsp;" + totalCumulativeGPA;
@@ -283,7 +276,6 @@ var onCalculateClick = function() {
 
 function getSemesterGPA() {
   var courses = getCourses();
-  console.log(courses);
   var semesterGPA = calculateTermGPA(courses);
   return semesterGPA;
 }
@@ -312,20 +304,15 @@ function calculateCumulativeGPA(gpa, creditHours) {
   // Get points from submitted GPA and total credit hours
   totalPoints = gpa * creditHours;
   totalCreditHours = creditHours;
-  console.log("Before points: " + totalPoints);
   for (var i = 0; i < courses.length; i++) {
     var cur = courses[i];
     currentPoints = cur.creditHours * cur.grade;
     totalPoints += currentPoints;
     totalCreditHours += cur.creditHours;
-  }
-  console.log("After points: " + totalPoints)
-  console.log("Credit Hours after: " + totalCreditHours);
-  tempGPA = totalPoints / totalCreditHours;
-  console.log("TempGAP: " + tempGPA);
-  var gpaFormatted = formatGPA(tempGPA);
-  console.log(gpaFormatted);
-  return gpaFormatted;
+
+    tempGPA = totalPoints / totalCreditHours;
+    var gpaFormatted = formatGPA(tempGPA);
+    return gpaFormatted;
 }
 
 var validateGPA = function() {
