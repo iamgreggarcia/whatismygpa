@@ -1,0 +1,319 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
+    <title>Calculate Your GPA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aldrich|Bangers|Cabin+Sketch|Monda|Monoton|Permanent+Marker|Roboto+Slab|Voces" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" style="color: #d23b34;" href="#">What is my GPA?</a>
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="color: #d23b34;" href="https://github.com/iamgreggarcia/whatismygpa" target="_blank">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="jumbotron">
+      <h1 class="display-4">What is my GPA?</h1>
+      <p class="lead">An easy way to calculate your grade point average.</p>
+      <hr class="my-4">
+      <p class="subtext">Find out your potential GPA this semester by selecting your projected letter grade and credits hours.</p>
+      </p>
+    </div>
+    <!-- Container Begin -->
+    
+    <div class="container">
+        <div class="row top-buffer side-buffer">
+          <div class="col-md-6">
+            <form>
+                <div class="form-group right-buffer">
+                    <label class="col-form-label" for="inputLarge">Current GPA (Optional)</label>
+                    <input class="form-control  form-control-lg" placeholder="Format: 0.00 - 4.00" id="currentGPA">
+                    <span class="error gpa-error" style="color:#d23b34;"></span>
+                  </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <form>
+                <div class="form-group right-buffer">
+                    <label class="col-form-label" for="inputLarge">Total Credit Hours Earned To Date (Optional)</label>
+                    <input class="form-control form-control-lg" placeholder="Credit Hours" id="currentCHTotal">
+                    <span class="error ch-error" style="color:#d23b34;"></span>
+                  </div>
+            </form>
+          </div>
+        </div>
+        <div class="row top-buffer side-buffer">
+          <div class="col-md-6">
+            <div class="form-group right-buffer">
+                <label class="col-form-label col-form-label-sm" for="inputLarge">Class 1</label>
+                <select class="custom-select" id="course1-grade">
+                  <option selected="">Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="F">F/E</option>
+                </select>
+                <span class="course1-grade" style="color:#d23b34;"></span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group right-buffer">
+                <label class="col-form-label col-form-label-sm" for="inputLarge">Class 1</label>
+                <select class="custom-select" id="course1-ch">
+                  <option selected="">Credit Hours</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+                <span class="course1-ch" style="color:#d23b34;"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row top-buffer side-buffer">
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 2</label>
+                  <select class="custom-select" id="course2-grade">
+                    <option selected="">Grade</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F/E</option>
+                  </select>
+                  <span class="course2-grade" style="color:#d23b34;"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 2</label>
+                  <select class="custom-select" id="course2-ch">
+                    <option selected="">Credit Hours</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                  </select>
+                  <span class="course2-ch" style="color:#d23b34;"></span>
+              </div>
+            </div>
+        </div>
+        <div class="row top-buffer side-buffer">
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 3</label>
+                  <select class="custom-select" id="course3-grade">
+                    <option selected="">Grade</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F/E</option>
+                  </select>
+                  <span class="course3-grade" style="color:#d23b34;"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 3</label>
+                  <select class="custom-select" id="course3-ch">
+                    <option selected="">Credit Hours</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                  </select>
+                  <span class="course3-ch" style="color:#d23b34;"></span>
+              </div>
+            </div>
+        </div>
+        <div class="row top-buffer side-buffer">
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 4</label>
+                  <select class="custom-select" id="course4-grade">
+                    <option selected="">Grade</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F/E</option>
+                  </select>
+                  <span class="course4-grade" style="color:#d23b34;"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 4</label>
+                  <select class="custom-select" id="course4-ch">
+                    <option selected="">Credit Hours</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                  </select>
+                  <span class="course4-ch" style="color:#d23b34;"></span>
+              </div>
+            </div>
+        </div>
+        <div class="row top-buffer side-buffer">
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 5</label>
+                  <select class="custom-select" id="course5-grade">
+                    <option selected="">Grade</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F/E</option>
+                  </select>
+                  <span class="course5-grade" style="color:#d23b34;"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 5</label>
+                  <select class="custom-select" id="course5-ch">
+                    <option selected="">Credit Hours</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                  </select>
+                  <span class="course5-ch" style="color:#d23b34;"></span>
+              </div>
+            </div>
+        </div>
+        <div class="row top-buffer side-buffer">
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 6</label>
+                  <select class="custom-select" id="course6-grade">
+                    <option selected="">Grade</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F/E</option>
+                  </select>
+                  <span class="course6-grade" style="color:#d23b34;"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group right-buffer">
+                  <label class="col-form-label col-form-label-sm" for="inputLarge">Class 6</label>
+                  <select class="custom-select" id="course6-ch">
+                    <option selected="">Credit Hours</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                  </select>
+                  <span class="course6-ch" style="color:#d23b34;"></span>
+              </div>
+            </div>
+        </div>
+        <div class="row top-buffer side-buffer">
+          <style>
+            .btn-primary.focus, .btn-primary:focus {
+               box-shadow: none !important;
+            }
+          </style>
+          <div class="col-md-6" style="padding-right: 6em;">
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="calcButton" style="border-color: #d23b34b8 !important;
+            background-color: #d23b34b8 !important;color: white !important; btn:focus">Calculate GPA</button>
+            <span class="calc-button-error" style="color:#d23b34;font-size: 30px;"></span>
+          </div>
+          <div class="col-md-6 top-buffer-sm">
+            <span class="computed-term-gpa" style="font-size:1.5rem;"></span> <br>
+            <span class="computed-cumulative-gpa" style="font-size: 1.5rem;;"></span>
+          </div>
+        </div>
+        <footer id="footer">
+            <div class="row">
+              <div class="col-lg-12">
+    
+                <ul class="list-unstyled">
+                  <li class="float-lg-right"><a href="#top">Back to top</a></li>
+                  <li><a href="https://github.com/iamgreggarcia/whatismygpa" target="_blank">GitHub</a></li>
+                </ul>
+                <p>Made by <a href="https://iamgreggarcia.me" target="_blank">Greg Garcia</a>.</p>
+                <p>Based on <a href="https://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>.</p>
+                <p>Fonts by <a href="https://fonts.google.com/" target="_blank">Google</a>.</p>
+              </div>
+            </div>
+          </footer>
+    </div>
+    <!-- Container End-->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="vendor/bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="js/calculator.js"></script>
+  </body>
+</html>
