@@ -215,7 +215,6 @@ function validateCourseRow(courseNumber, gradeEl, creditHourEl) {
   }
 }
 
-// Register event listeners
 var gpaError = false, chError = false, gradeSelectorError = false, chSelectorError = false;
 var calcButtonErrorEl = document.querySelector('.calc-button-error');
 var computedTermGPAElement = document.querySelector('.computed-term-gpa');
@@ -226,15 +225,20 @@ var gpaErrorElement = document.querySelector('.gpa-error');
 var creditHourErrorEl = document.querySelector('.ch-error');
 var calculate = document.getElementById("calcButton");
 
+// Calculate button handler 
 var onCalculateClick = function() {
     calcButtonErrorEl.innerHTML = "";
     computedTermGPAElement.innerHTML = "";
     computedCumulativeGPA.innerHTML = "";
     var formClassesArray = [];
-    var gpa, ch;
-    gpa = formatGPA(gpaInput.value);
+
+    gpa = parseFloat(gpaInput.value);
     ch = parseInt(creditHoursInput.value);
-    if (!gpaError && !chError && gpaInput.value != '' && creditHoursInput.value != '' && !gradeSelectorError && !chSelectorError) {
+    if (!isNaN(gpa)) {
+      gpa = formatGPA(gpaInput.value);
+    }
+
+    if (!gpaError && !chError && !isNaN(gpa) && !isNaN(ch) && !gradeSelectorError && !chSelectorError) {
       // Get values from dropdowns and compute cumulative GPA
       // call function to get values from dropdown
       formClassesArray = getCourses();
@@ -257,9 +261,7 @@ var onCalculateClick = function() {
         calcButtonErrorEl.innerHTML = "Oops! Please select a grade for the course(s) above.";
       } else if (chSelectorError && !gradeSelectorError) {
         calcButtonErrorEl.innerHTML = "Oops! Please select the credit hours for the course(s) above.";
-      } else {
-        // compute  
-      }
+      } 
     }
 
     // Compute Term/Semester GPA
@@ -273,17 +275,20 @@ var onCalculateClick = function() {
     }
 };
 
+// Returns semester/term GPA
 function getSemesterGPA() {
   var courses = getCourses();
   var semesterGPA = calculateTermGPA(courses);
   return semesterGPA;
 }
 
+// Returns cumulative GPA
 function getCumulativeGPA(gpa, creditHours) {
   cumGPA = calculateCumulativeGPA(gpa, creditHours);
   return cumGPA;
 }
 
+// Computes semester GPA
 function calculateTermGPA(courses) {
   var totalPoints = 0, totalCreditHours = 0, tempGPA = 0;
   for (var i = 0; i < courses.length; i++) {
@@ -297,6 +302,7 @@ function calculateTermGPA(courses) {
   return gpaFormatted;
 }
 
+// Computes cumulative GPA
 function calculateCumulativeGPA(gpa, creditHours) {
   var totalPoints = 0, totalCreditHours = 0, currentPoints = 0, tempGPA = 0;
   var courses = getCourses();
@@ -308,13 +314,13 @@ function calculateCumulativeGPA(gpa, creditHours) {
     currentPoints = cur.creditHours * cur.grade;
     totalPoints += currentPoints;
     totalCreditHours += cur.creditHours;
-
-    tempGPA = totalPoints / totalCreditHours;
-    var gpaFormatted = formatGPA(tempGPA);
-    return gpaFormatted;
   }
+  tempGPA = totalPoints / totalCreditHours;
+  var gpaFormatted = formatGPA(tempGPA);
+  return gpaFormatted;
 }
 
+// Validate GPA format in textbox
 var validateGPA = function() {
   var gpaRegex = /^([0-3](\.\d\d?\d?)?|4(.000?)?)$/;
   if (!gpaRegex.test(gpaInput.value) && gpaInput.value != '') {
@@ -328,7 +334,7 @@ var validateGPA = function() {
 };
 
 
-
+// Validate credit hours format in textbox
 var validateCreditHours = function () {
   var creditHourRegex = /^\d*[1-9]\d*$/;
   if (!creditHourRegex.test(creditHoursInput.value) && creditHoursInput.value != '') {
@@ -341,11 +347,26 @@ var validateCreditHours = function () {
   }
 };
 
+// Returns proper GPA format: [0.000]
 function formatGPA(number) {
   return Number.parseFloat(number).toFixed(3);
 }
 
-// Grade conversion map
+// Disable keypress on both 'Current GPA'
+// input and 'Total Credit Hours Earned To Date' input
+gpaInput.onkeypress = function(e) {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+  }
+};
+creditHoursInput.onkeypress = function(e) {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+  }
+};
+
+// Grade conversion map:
+// Maps letter grade to associated numberical value
 var a      = "A",
     aMinus = "A-",
     bPlus  = "B+",
@@ -358,7 +379,6 @@ var a      = "A",
     d      = "D",
     f = "F";
 
-// Mapping for letter grade to numerical conversion
 var gradeToPointsTable = new Map();
 gradeToPointsTable.set(a, 4.0);
 gradeToPointsTable.set(aMinus, 3.7);
@@ -381,7 +401,8 @@ creditHourToInteger.set("2", 2.00);
 creditHourToInteger.set("1", 1.00);
 
 /* 
-  Register event listeners
+  Register validation event listeners
+  Check for changes in each course/class row
 */
 
 // Course 1
@@ -412,17 +433,5 @@ course6CHEl.addEventListener('input', row6ChangeHanlder);
 gpaInput.addEventListener('input', validateGPA);
 creditHoursInput.addEventListener('input', validateCreditHours);
 
-
-gpaInput.onkeypress = function(e) {
-  if (e.keyCode == 13) {
-    e.preventDefault();
-  }
-};
-creditHoursInput.onkeypress = function(e) {
-  if (e.keyCode == 13) {
-    e.preventDefault();
-  }
-};
-
-// Calculate GPA button
+// Calculate button event lister
 calculate.addEventListener("click", onCalculateClick);
