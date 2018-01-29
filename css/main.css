@@ -98,4 +98,8 @@ span.computed-term-gpa {
     .top-buffer-sm {
         margin-top: 1.5em;
     }
+    .side-buffer {
+        margin-right: -0.5em;
+        margin-left: 2.5em;
+    }
 }
