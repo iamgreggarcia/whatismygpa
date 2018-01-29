@@ -1,1 +1,2 @@
-# What is my GPA? is a basic GPA Calculator.
+# What is my GPA?
+A tired question for undergraduates.
