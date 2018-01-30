@@ -58,6 +58,7 @@ errorSpansMap.set(course3 + creditHourError,  course3CHError);
 errorSpansMap.set(course4 + gradeError,       course3GradeError);
 errorSpansMap.set(course4 + creditHourError,  course4CHError);
 errorSpansMap.set(course5 + gradeError,       course5GradeError);
+errorSpansMap.set(course5 + creditHourError,  course5CHError);
 errorSpansMap.set(course6 + gradeError,       course6GradeError);
 errorSpansMap.set(course6 + creditHourError,  course6CHError);
 
