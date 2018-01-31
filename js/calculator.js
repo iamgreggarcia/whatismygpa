@@ -55,7 +55,7 @@ errorSpansMap.set(course2 + gradeError,       course2GradeError);
 errorSpansMap.set(course2 + creditHourError,  course2CHError);
 errorSpansMap.set(course3 + gradeError,       course3GradeError);
 errorSpansMap.set(course3 + creditHourError,  course3CHError);
-errorSpansMap.set(course4 + gradeError,       course3GradeError);
+errorSpansMap.set(course4 + gradeError,       course4GradeError);
 errorSpansMap.set(course4 + creditHourError,  course4CHError);
 errorSpansMap.set(course5 + gradeError,       course5GradeError);
 errorSpansMap.set(course5 + creditHourError,  course5CHError);
@@ -217,6 +217,7 @@ function validateCourseRow(courseNumber, gradeEl, creditHourEl) {
 }
 
 var gpaError = false, chError = false, gradeSelectorError = false, chSelectorError = false;
+var infoMessageEl = document.querySelector('.info-message');
 var calcButtonErrorEl = document.querySelector('.calc-button-error');
 var computedTermGPAElement = document.querySelector('.computed-term-gpa');
 var computedCumulativeGPA = document.querySelector('.computed-cumulative-gpa');
@@ -249,19 +250,25 @@ var onCalculateClick = function() {
         var totalCumulativeGPA = getCumulativeGPA(gpa, ch);
         computedTermGPAElement.innerHTML = "Semester GPA:&emsp;" + semesterGPA + "\n";
         computedCumulativeGPA.innerHTML  = "Cumulative GPA:&emsp;" + totalCumulativeGPA;
+        $('#gradeModal').modal('show');
       }
 
     } else {
       if (gpaError && chError) {
         calcButtonErrorEl.innerHTML = "Oops! Please enter a valid GPA and total credits earned to date.";
+        $('#calcButtonErrorModal').modal('show');
       } else if (gpaError && !chError) {
         calcButtonErrorEl.innerHTML = "Oops! Please enter a valid GPA.";
+        $('#calcButtonErrorModal').modal('show');
       } else if (!gpaError && chError) {
         calcButtonErrorEl.innerHTML = "Oops! Please enter a positve whole number for total credits earned to date.";
+        $('#calcButtonErrorModal').modal('show');
       } else if (!chSelectorError && gradeSelectorError) {
-        calcButtonErrorEl.innerHTML = "Oops! Please select a grade for the course(s) above.";
+        calcButtonErrorEl.innerHTML = "Oops! Please select a grade for your course(s).";
+        $('#calcButtonErrorModal').modal('show');
       } else if (chSelectorError && !gradeSelectorError) {
-        calcButtonErrorEl.innerHTML = "Oops! Please select the credit hours for the course(s) above.";
+        calcButtonErrorEl.innerHTML = "Oops! Please select the credit hours for your course(s).";
+        $('#calcButtonErrorModal').modal('show');
       } 
     }
 
@@ -272,6 +279,14 @@ var onCalculateClick = function() {
         formClassesArray.length = 0;
         var termGPA = getSemesterGPA();
         computedTermGPAElement.innerHTML = "Semester GPA:&emsp;" + termGPA + "\n";
+        $('#gradeModal').modal('show');
+      } else {
+        infoMessageEl.innerHTML = "To get started: <br><br> &#8226; Select the grade you want (or expect) from the drop down <br>" +
+        " &#8226; Select the number of credit/unit hours for that class<br>"  +
+        " &#8226 Click 'Calculate GPA'<br><br>" +
+        " You can also enter in your current cumulative GPA (4.0-scale) and the number of credit/unit hours" +
+        " earned to date";
+        $('#infoMessage').modal('show');
       }
     }
 };
