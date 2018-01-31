@@ -21,7 +21,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Aldrich|Bangers|Cabin+Sketch|Monda|Monoton|Permanent+Marker|Roboto+Slab|Voces" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aldrich|Bangers|Cabin+Sketch|Monda|Lato|Monoton|Permanent+Marker|Inconsolata|Roboto+Slab|Voces" rel="stylesheet">
     <!-- Custom Styles -->
     <link href="css/main.css" rel="stylesheet">
   </head>
@@ -54,7 +54,7 @@
                 <div class="form-group right-buffer">
                     <label class="col-form-label" for="inputLarge">Current GPA (Optional)</label>
                     <input class="form-control  form-control-lg" placeholder="Format: 0.00 - 4.00" id="currentGPA">
-                    <span class="error gpa-error" style="color:#d23b34;"></span>
+                    <span class="error gpa-error course" style="color:#d23b34;"></span>
                   </div>
             </form>
           </div>
@@ -63,7 +63,7 @@
                 <div class="form-group right-buffer">
                     <label class="col-form-label" for="inputLarge">Total Credit Hours Earned To Date (Optional)</label>
                     <input class="form-control form-control-lg" placeholder="Credit Hours" id="currentCHTotal">
-                    <span class="error ch-error" style="color:#d23b34;"></span>
+                    <span class="error ch-error course" style="color:#d23b34;"></span>
                   </div>
             </form>
           </div>
@@ -86,7 +86,7 @@
                   <option value="D">D</option>
                   <option value="F">F/E</option>
                 </select>
-                <span class="course1-grade" style="color:#d23b34;"></span>
+                <span class="course1-grade course" style="color:#d23b34;"></span>
             </div>
           </div>
           <div class="col-md-6">
@@ -100,7 +100,7 @@
                   <option value="2">2</option>
                   <option value="1">1</option>
                 </select>
-                <span class="course1-ch" style="color:#d23b34;"></span>
+                <span class="course1-ch course" style="color:#d23b34;"></span>
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@
                     <option value="D">D</option>
                     <option value="F">F/E</option>
                   </select>
-                  <span class="course2-grade" style="color:#d23b34;"></span>
+                  <span class="course2-grade course" style="color:#d23b34;"></span>
               </div>
             </div>
             <div class="col-md-6">
@@ -136,7 +136,7 @@
                     <option value="2">2</option>
                     <option value="1">1</option>
                   </select>
-                  <span class="course2-ch" style="color:#d23b34;"></span>
+                  <span class="course2-ch course" style="color:#d23b34;"></span>
               </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
                     <option value="D">D</option>
                     <option value="F">F/E</option>
                   </select>
-                  <span class="course3-grade" style="color:#d23b34;"></span>
+                  <span class="course3-grade course" style="color:#d23b34;"></span>
               </div>
             </div>
             <div class="col-md-6">
@@ -172,7 +172,7 @@
                     <option value="2">2</option>
                     <option value="1">1</option>
                   </select>
-                  <span class="course3-ch" style="color:#d23b34;"></span>
+                  <span class="course3-ch course" style="color:#d23b34;"></span>
               </div>
             </div>
         </div>
@@ -194,7 +194,7 @@
                     <option value="D">D</option>
                     <option value="F">F/E</option>
                   </select>
-                  <span class="course4-grade" style="color:#d23b34;"></span>
+                  <span class="course4-grade course" style="color:#d23b34;"></span>
               </div>
             </div>
             <div class="col-md-6">
@@ -208,7 +208,7 @@
                     <option value="2">2</option>
                     <option value="1">1</option>
                   </select>
-                  <span class="course4-ch" style="color:#d23b34;"></span>
+                  <span class="course4-ch course" style="color:#d23b34;"></span>
               </div>
             </div>
         </div>
@@ -230,7 +230,7 @@
                     <option value="D">D</option>
                     <option value="F">F/E</option>
                   </select>
-                  <span class="course5-grade" style="color:#d23b34;"></span>
+                  <span class="course5-grade course" style="color:#d23b34;"></span>
               </div>
             </div>
             <div class="col-md-6">
@@ -266,7 +266,7 @@
                     <option value="D">D</option>
                     <option value="F">F/E</option>
                   </select>
-                  <span class="course6-grade" style="color:#d23b34;"></span>
+                  <span class="course6-grade course" style="color:#d23b34;"></span>
               </div>
             </div>
             <div class="col-md-6">
@@ -280,7 +280,7 @@
                     <option value="2">2</option>
                     <option value="1">1</option>
                   </select>
-                  <span class="course6-ch" style="color:#d23b34;"></span>
+                  <span class="course6-ch course" style="color:#d23b34;"></span>
               </div>
             </div>
         </div>
@@ -293,11 +293,8 @@
           <div class="col-md-6" style="padding-right: 6em;">
             <button type="button" class="btn btn-primary btn-lg btn-block" id="calcButton" style="border-color: #d23b34b8 !important;
             background-color: #d23b34b8 !important;color: white !important; btn:focus">Calculate GPA</button>
-            <span class="calc-button-error" style="color:#d23b34;font-size: 30px;"></span>
           </div>
           <div class="col-md-6 top-buffer-sm">
-            <span class="computed-term-gpa" style="font-size:1.5rem;"></span> <br>
-            <span class="computed-cumulative-gpa" style="font-size: 1.5rem;;"></span>
           </div>
         </div>
         <footer id="footer">
@@ -315,6 +312,68 @@
               </div>
             </div>
           </footer>
+    <!-- Modals -->
+    <div class="modal fade" id="gradeModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="container">
+                <span class="computed-term-gpa gpa" style="font-size:1.5rem;"></span> <br>
+                <span class="computed-cumulative-gpa gpa" style="font-size: 1.5rem;;"></span>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color:#d23b34">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="calcButtonErrorModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="container">
+                <span class="calc-button-error" style="color:#d23b34;font-size: 1.5em;"></span>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color:#d23b34">Okay, thanks!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="infoMessage" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="container">
+                <span class="info-message" style="color:#414141;font-size: 1.00em;"></span>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color:#d23b34">Okay, thanks!</button>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
     <!-- Container End-->
     <!-- Bootstrap core JavaScript

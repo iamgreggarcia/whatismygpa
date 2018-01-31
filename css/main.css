@@ -94,6 +94,18 @@ span.computed-term-gpa {
     font-size: 1.5rem;
 }
 
+.course {
+    display: inline-block;
+}
+
+.info-message, .calc-button-error {
+    font-family: 'Lato', sans-serif;
+}
+
+.gpa {
+    font-family: 'Inconsolata', monospace;
+}
+
 @media screen and (max-width: 764px) {
     .top-buffer-sm {
         margin-top: 1.5em;
