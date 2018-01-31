@@ -29,11 +29,11 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" style="color: #d23b34;" href="#">What is my GPA?</a>
+      <a class="navbar-brand" data-toggle="tooltip" data-placement="top" title="Home" style="color: #d23b34;" href="#">What &nbsp; is &nbsp; my &nbsp; GPA?</a>
       <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" style="color: #d23b34;" href="https://github.com/iamgreggarcia/whatismygpa" target="_blank">GitHub</a>
+            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Project Site"style="color: #d23b34;" href="https://github.com/iamgreggarcia/whatismygpa" target="_blank">GitHub</a>
           </li>
         </ul>
       </div>
@@ -44,6 +44,7 @@
       <hr class="my-4">
       <p class="subtext">Find out your potential GPA this semester by selecting your projected letter grade and credits hours.</p>
       </p>
+      <p class="subtext"><a href="#" class="help"id="help"data-toggle="tooltip" data-placement="top" title="Click for Help">How does this work?</a></p>
     </div>
     <!-- Container Begin -->
     
@@ -292,7 +293,8 @@
           </style>
           <div class="col-md-6" style="padding-right: 6em;">
             <button type="button" class="btn btn-primary btn-lg btn-block" id="calcButton" style="border-color: #d23b34b8 !important;
-            background-color: #d23b34b8 !important;color: white !important; btn:focus">Calculate GPA</button>
+            background-color: #d23b34b8 !important;color: white !important; btn:focus" 
+            data-toggle="tooltip" data-placement="top" title="Click to Calculate GPA">Calculate GPA</button>
           </div>
           <div class="col-md-6 top-buffer-sm">
           </div>
@@ -306,7 +308,7 @@
                   <li><a href="https://github.com/iamgreggarcia/whatismygpa" target="_blank">GitHub</a></li>
                 </ul>
                 <p>Made by <a href="https://iamgreggarcia.me" target="_blank">Greg Garcia</a>.</p>
-                <p>Based on <a href="https://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>.</p>
+                <p>Uses <a href="https://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>.</p>
                 <p>Fonts by <a href="https://fonts.google.com/" target="_blank">Google</a>.</p>
                 <p>Find a bug? Submit issues <a href="https://github.com/iamgreggarcia/whatismygpa/issues/" target="_blank">here.</a></p>
               </div>
@@ -317,7 +319,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title"></h5>
+            <h5 class="modal-title">Overview</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -358,7 +360,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title"></h5>
+            <h5 class="modal-title">What &nbsp; is &nbsp; my &nbsp; GPA?</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
