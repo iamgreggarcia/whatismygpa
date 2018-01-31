@@ -62,6 +62,9 @@ errorSpansMap.set(course5 + creditHourError,  course5CHError);
 errorSpansMap.set(course6 + gradeError,       course6GradeError);
 errorSpansMap.set(course6 + creditHourError,  course6CHError);
 
+// get help link
+var helpLink = document.querySelector('#help');
+helpLink.addEventListener('click', onHelpClick);
 
 // Create new course object
 function newCourse(grade, creditHours) {
@@ -281,15 +284,23 @@ var onCalculateClick = function() {
         computedTermGPAElement.innerHTML = "Semester GPA:&emsp;" + termGPA + "\n";
         $('#gradeModal').modal('show');
       } else {
-        infoMessageEl.innerHTML = "To get started: <br><br> &#8226; Select the grade you want (or expect) from the drop down <br>" +
-        " &#8226; Select the number of credit/unit hours for that class<br>"  +
-        " &#8226 Click 'Calculate GPA'<br><br>" +
-        " You can also enter in your current cumulative GPA (4.0-scale) and the number of credit/unit hours" +
-        " earned to date";
+        infoMessageEl.innerHTML = helpMessageText;
         $('#infoMessage').modal('show');
       }
     }
 };
+
+var helpMessageText = "To get started: <br><br> &#8226; Select the grade you want (or expect) from the 'grade' drop down menu <br>" +
+" &#8226; Select the number of credit/unit hours for that class from the 'credit hours' drop down menu<br>"  +
+" &#8226 Click 'Calculate GPA'<br><br>" +
+" You can also enter in your current cumulative GPA (4.0-scale) and the number of credit/unit hours" +
+" earned to date";
+
+var onHelpClick = function() {
+
+  infoMessageEl.innerHTML = helpMessageText;
+        $('#infoMessage').modal('show');
+}
 
 // Returns semester/term GPA
 function getSemesterGPA() {
@@ -448,6 +459,10 @@ course6CHEl.addEventListener('input', row6ChangeHanlder);
 // GPA text input and credit hour input
 gpaInput.addEventListener('input', validateGPA);
 creditHoursInput.addEventListener('input', validateCreditHours);
+
+// get help link
+var helpLink = document.querySelector('#help');
+helpLink.addEventListener('click', onHelpClick);
 
 // Calculate button event lister
 calculate.addEventListener("click", onCalculateClick);

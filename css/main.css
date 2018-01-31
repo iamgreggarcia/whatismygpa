@@ -86,6 +86,10 @@ footer {
    font-size: 1.15rem;
 }
 
+.subtext a {
+    color: #d23b34;
+}
+
 .lead {
     font-size: 1.50rem;
 }
@@ -100,6 +104,11 @@ span.computed-term-gpa {
 
 .info-message, .calc-button-error {
     font-family: 'Lato', sans-serif;
+}
+
+.modal-title {
+    font-family: 'Monoton', cursive; 
+    color: #d23b34;
 }
 
 .gpa {
