@@ -201,13 +201,13 @@ function validateCourseRow(courseNumber, gradeEl, creditHourEl) {
 
   if (gradeValue != "Grade" && chValue == "Credit Hours") {
     var creditHour = errorSpansMap.get(courseNumber + creditHourError);
-    creditHour.innerHTML = "Select credit hours for " + courseNumber;
+    creditHour.innerHTML = "Select credit hours";
     chSelectorError = true;
   } else if (gradeValue == "Grade" && chValue != "Credit Hours") {
     // show message to select grade from dropdown
     gradeSelectorError = true;
     var courseGrade = errorSpansMap.get(courseNumber + gradeError);
-    courseGrade.innerHTML = "Select grade for " + courseNumber;
+    courseGrade.innerHTML = "Select grade";
   } else {
     // clear messages
     var ch = errorSpansMap.get(courseNumber + creditHourError);
