@@ -466,3 +466,8 @@ helpLink.addEventListener('click', onHelpClick);
 
 // Calculate button event lister
 calculate.addEventListener("click", onCalculateClick);
+
+// Initialize tooltips
+$(function() {
+  $('[data-toggle="tooltip"').tooltip();
+});
