@@ -300,7 +300,7 @@ var onHelpClick = function() {
 
   infoMessageEl.innerHTML = helpMessageText;
         $('#infoMessage').modal('show');
-}
+};
 
 // Returns semester/term GPA
 function getSemesterGPA() {
