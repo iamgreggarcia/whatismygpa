@@ -20,7 +20,7 @@ footer {
     color: #767676;
 }
 .navbar-brand {
-    padding-left: 2.15gem;
+    margin-left: 2em;
     font-size: 1.50rem;
 }
 .display-4, .lead {
@@ -122,5 +122,8 @@ span.computed-term-gpa {
     .side-buffer {
         margin-right: -0.5em;
         margin-left: 2.5em;
+    }
+    .navbar-brand {
+        margin-left: 2em;
     }
 }
