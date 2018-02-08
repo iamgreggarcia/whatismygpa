@@ -251,8 +251,8 @@ var onCalculateClick = function() {
         formClassesArray.length = 0;
         var semesterGPA = getSemesterGPA();
         var totalCumulativeGPA = getCumulativeGPA(gpa, ch);
-        computedTermGPAElement.innerHTML = "Semester GPA:&emsp;" + semesterGPA + "\n";
-        computedCumulativeGPA.innerHTML  = "Cumulative GPA:&emsp;" + totalCumulativeGPA;
+        computedTermGPAElement.innerHTML = semesterGPA;
+        computedCumulativeGPA.innerHTML  = totalCumulativeGPA;
         $('#gradeModal').modal('show');
       }
 
@@ -281,7 +281,7 @@ var onCalculateClick = function() {
       if (formClassesArray.length > 0) {
         formClassesArray.length = 0;
         var termGPA = getSemesterGPA();
-        computedTermGPAElement.innerHTML = "Semester GPA:&emsp;" + termGPA + "\n";
+        computedTermGPAElement.innerHTML = termGPA;
         $('#gradeModal').modal('show');
       } else {
         infoMessageEl.innerHTML = helpMessageText;

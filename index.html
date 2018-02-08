@@ -319,16 +319,33 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Overview</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <div class="container">
-                <span class="computed-term-gpa gpa" style="font-size:1.5rem;"></span> <br>
-                <span class="computed-cumulative-gpa gpa" style="font-size: 1.5rem;;"></span>
-              </div>
+          <h5 class="modal-title">Overview</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+         <div class="modal-body">
+            <div class="container">
+              <table class="table"> 
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">GPA</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Semester</th>
+                    <td class="computed-term-gpa gpa"></td>
+                  </tr>
+                  <tr class="gpa-hide">
+                    <th scope="row">Cumulative</th>
+                    <td class="computed-cumulative-gpa gpa"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color:#d23b34">Close</button>
