@@ -113,6 +113,11 @@ span.computed-term-gpa {
 
 .gpa {
     font-family: 'Inconsolata', monospace;
+    font-weight: bold;
+}
+
+.semester-show {
+    font-size: 1.15em;
 }
 
 @media screen and (max-width: 764px) {
