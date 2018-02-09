@@ -232,6 +232,7 @@ var calculate = document.getElementById("calcButton");
 
 // Calculate button handler 
 var onCalculateClick = function() {
+    var hideGPAEl = document.querySelector('.gpa-hide');
     calcButtonErrorEl.innerHTML = "";
     computedTermGPAElement.innerHTML = "";
     computedCumulativeGPA.innerHTML = "";
@@ -251,9 +252,11 @@ var onCalculateClick = function() {
         formClassesArray.length = 0;
         var semesterGPA = getSemesterGPA();
         var totalCumulativeGPA = getCumulativeGPA(gpa, ch);
+        hideGPAEl.style.visibility = "visible";
         computedTermGPAElement.innerHTML = semesterGPA;
         computedCumulativeGPA.innerHTML  = totalCumulativeGPA;
         $('#gradeModal').modal('show');
+        return;
       }
 
     } else {
@@ -282,10 +285,12 @@ var onCalculateClick = function() {
         formClassesArray.length = 0;
         var termGPA = getSemesterGPA();
         computedTermGPAElement.innerHTML = termGPA;
+        hideGPAEl.style.visibility = "collapse";
         $('#gradeModal').modal('show');
       } else {
         infoMessageEl.innerHTML = helpMessageText;
         $('#infoMessage').modal('show');
+        return;
       }
     }
 };
