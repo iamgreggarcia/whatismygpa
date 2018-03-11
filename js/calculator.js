@@ -46,6 +46,13 @@ var course6CHError    = document.querySelector('.course6-ch');
 var course6GradeEl    = document.querySelector('#course6-grade');
 var course6CHEl       = document.querySelector('#course6-ch');
 
+// Course Rows Array
+var courseRowArr = [course1GradeEl, course1CHEl, course2GradeEl, course2CHEl,
+                    course3GradeEl, course3CHEl, course4GradeEl, course4CHEl,
+                    course5GradeEl, course5CHEl, course6GradeEl, course6CHEl];
+var courseRowErrorArr = [course1GradeError, course1CHError, course2GradeError, course2CHError,
+                        course3GradeError, course3CHError, course4GradeError, course4CHError,
+                        course5GradeError, course5CHError, course6GradeError, course6CHError];
 
 // Error spans map
 var errorSpansMap = new Map();
@@ -229,6 +236,32 @@ var creditHoursInput = document.getElementById("currentCHTotal");
 var gpaErrorElement = document.querySelector('.gpa-error');
 var creditHourErrorEl = document.querySelector('.ch-error');
 var calculate = document.getElementById("calcButton");
+var clearButton = document.getElementById("clearButton");
+var confirmClearModal = document.getElementById("confirmClear");
+var confirmClearModalMessage = document.querySelector('.confirm-message');
+
+var onClearButtonClick = function() {
+  confirmClearModalMessage.innerHTML = "Are you sure you want to clear your form?";
+  $('#confirm').modal('show');
+};
+
+// Confirm clear form data button
+var onConfirmButtonClick = function() {
+  // Clears grade and credit hour dropdowns
+  courseRowArr.forEach(function(element) {
+    element.selectedIndex = 0;
+  });
+
+  // Clears Error message fields
+  courseRowErrorArr.forEach(function(element) {
+    element.innerHTML = "";
+  });
+
+  // clear GPA Input
+  gpaInput.value = "";
+  creditHoursInput.value = "";
+
+};
 
 // Calculate button handler 
 var onCalculateClick = function() {
@@ -252,11 +285,16 @@ var onCalculateClick = function() {
         formClassesArray.length = 0;
         var semesterGPA = getSemesterGPA();
         var totalCumulativeGPA = getCumulativeGPA(gpa, ch);
-        hideGPAEl.style.visibility = "visible";
-        computedTermGPAElement.innerHTML = semesterGPA;
-        computedCumulativeGPA.innerHTML  = totalCumulativeGPA;
-        $('#gradeModal').modal('show');
-        return;
+        if ((isNaN(semesterGPA)) || (isNaN(totalCumulativeGPA))) {
+          calcButtonErrorEl.innerHTML = "Oops! Please select a grade  and credit hour(s) for your course(s).";
+          $('#calcButtonErrorModal').modal('show');
+        } else {
+          hideGPAEl.style.visibility = "visible";
+          computedTermGPAElement.innerHTML = semesterGPA;
+          computedCumulativeGPA.innerHTML  = totalCumulativeGPA;
+          $('#gradeModal').modal('show');
+          return;
+        }
       }
 
     } else {
@@ -284,9 +322,14 @@ var onCalculateClick = function() {
       if (formClassesArray.length > 0) {
         formClassesArray.length = 0;
         var termGPA = getSemesterGPA();
-        computedTermGPAElement.innerHTML = termGPA;
-        hideGPAEl.style.visibility = "collapse";
-        $('#gradeModal').modal('show');
+        if (isNaN(termGPA)) {
+          calcButtonErrorEl.innerHTML = "Oops! Please select a grade  and credit hour(s) for your course(s).";
+          $('#calcButtonErrorModal').modal('show');
+        } else {
+          computedTermGPAElement.innerHTML = termGPA;
+          hideGPAEl.style.visibility = "collapse";
+          $('#gradeModal').modal('show');
+        }
       } else {
         infoMessageEl.innerHTML = helpMessageText;
         $('#infoMessage').modal('show');
@@ -469,8 +512,14 @@ creditHoursInput.addEventListener('input', validateCreditHours);
 var helpLink = document.querySelector('#help');
 helpLink.addEventListener('click', onHelpClick);
 
-// Calculate button event lister
+// Calculate button event listener
 calculate.addEventListener("click", onCalculateClick);
+
+// Clear Form button event listener
+clearButton.addEventListener("click", onClearButtonClick);
+
+// Confirm clear data button event listener
+confirmClear.addEventListener("click", onConfirmButtonClick);
 
 // Initialize tooltips
 $(function() {
