@@ -411,10 +411,10 @@ var validateGPA = function() {
 
 // Validate credit hours format in textbox
 var validateCreditHours = function () {
-  var creditHourRegex = /^\d*[1-9]\d*$/;
+  var creditHourRegex = /^\d*(\.\d+)?$/;
   if (!creditHourRegex.test(creditHoursInput.value) && creditHoursInput.value != '') {
     chError = true;
-    creditHourErrorEl.innerHTML = "Please enter a positive whole number.";
+    creditHourErrorEl.innerHTML = "Please enter a positive number.";
   } else {
     chError = false;
     creditHourErrorEl.innerHTML = "";
@@ -469,10 +469,16 @@ gradeToPointsTable.set(f, 0.0);
 
 // Mapping for credit hour to numerical conversion
 var creditHourToInteger = new Map();
+creditHourToInteger.set("6", 6.00);
+creditHourToInteger.set("5.5", 5.50);
 creditHourToInteger.set("5", 5.00);
+creditHourToInteger.set("4.5", 4.50);
 creditHourToInteger.set("4", 4.00);
+creditHourToInteger.set("3.5", 3.50);
 creditHourToInteger.set("3", 3.00);
+creditHourToInteger.set("2.5", 2.50);
 creditHourToInteger.set("2", 2.00);
+creditHourToInteger.set("1.5", 1.50);
 creditHourToInteger.set("1", 1.00);
 
 /* 
